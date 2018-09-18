@@ -52,42 +52,52 @@ for n, val in enumerate(test_tuple):
 ```
 
 ## Modular Coding
-* Modularity will allow for discrete *units *of function to be explicitly *tested*.
-  This is essential in medical software design.
+* Modularity will allow for discrete *units *of function to be explicitly *tested*.  This is essential in medical software design.
 * Modularity will allow the functional logic of software to be more readable.
 * Modularity promotes the reuse of tested and validated code to compose new
   code.
 * A non-object-oriented example of Python code:
 ```
+# This main function captures what actions this script will execute when called
+# by the last line of the script (note functions that are called are named as
+# verbs (actions)).
 def main():
     collect_all_csv_filenames()
     read_csv()
     write_data()
 
 
+# Define a function that, as written, does nothing
 def collect_all_csv_filenames():
     from glob import glob
     pass
 
 
+# Define another function
 def read_csv():
     check_no_spaces()
     check_camel_case()
     pass
 
 
+# Define another function
 def write_data(type='json'):
     pass
 
 
+# Define another function
 def check_no_spaces():
     pass
 
 
+# Define another function
 def check_camel_case():
     pass
     
-
+# The __name__ variable is something automatically set by the Python
+# interpreter based on the file that is being executed.  When this script is
+# being directly executed, __name__ is set equal to __main__; when that happens,
+# this conditional statement then executes the main() function defined above.
 if __name__ == "__main__":
     main()
 ```
